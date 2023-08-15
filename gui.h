@@ -33,8 +33,8 @@ typedef enum GUI_DisplayType_t GUI_DisplayType_t;
 
 extern GUI_DisplayType_t gScreenToDisplay;
 extern uint8_t g_200003C6;
-extern volatile uint8_t g_20000380;
-extern volatile uint8_t g_20000390;
+extern volatile uint8_t gCurrentStep;
+extern volatile int8_t g_20000390;
 extern uint8_t g_200003BA;
 extern uint8_t g_200003BB;
 extern uint8_t gWasFKeyPressed;
@@ -42,6 +42,10 @@ extern uint8_t gWasFKeyPressed;
 extern bool gAskForConfirmation;
 extern bool gAskToSave;
 extern bool gAskToDelete;
+
+extern uint8_t gMenuCursor;
+extern uint8_t gMenuScrollDirection;
+extern uint32_t gSubMenuSelection;
 
 void GUI_DisplayBatteryLevel(uint8_t BatteryLevel);
 void GUI_Welcome(void);

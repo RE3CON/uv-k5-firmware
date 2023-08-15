@@ -45,13 +45,14 @@ uint16_t gEEPROM_1F8C;
 
 uint8_t gMR_ChannelParameters[207];
 
-uint8_t g_2000032D;
+volatile bool gNextTimeslice500ms;
 volatile uint16_t g_2000032E;
 volatile uint16_t g_2000033A;
-volatile uint16_t g_2000033E = 1000;
+volatile uint16_t gTxTimerCountdown = 1000;
 volatile uint16_t g_20000342;
 volatile uint16_t g_2000034C;
 volatile uint16_t g_20000356;
+uint16_t g_20000362;
 uint8_t g_2000036B;
 uint8_t g_2000036D;
 uint8_t g_2000036E;
@@ -65,26 +66,33 @@ uint8_t g_20000377;
 uint8_t gVFO_RSSI_Level[2];
 uint8_t g_2000037E;
 volatile uint8_t g_20000381;
+uint8_t g_20000382;
 uint8_t g_20000383;
 uint16_t g_2000038E;
 uint8_t g_200003A9;
 uint8_t g_200003AA;
-uint8_t g_200003AB;
-uint8_t g_200003AD;
-uint8_t g_200003AE;
-uint8_t g_200003AF;
+bool g_CDCSS_Lost;
+bool g_CTCSS_Lost;
+bool g_CxCSS_TAIL_Found;
+bool g_VOX_Lost;
 uint8_t g_200003B0;
 uint16_t g_200003B6;
 uint8_t g_200003BC;
 uint8_t g_200003BD;
 uint8_t g_200003BE;
 uint8_t g_200003C3;
+volatile uint16_t g_200003E4;
 uint8_t g_200003FD;
 uint8_t g_20000400;
 uint8_t g_20000410;
 uint8_t g_20000411;
+uint8_t g_20000413;
+uint8_t g_20000415;
+uint8_t g_20000416;
 uint8_t g_2000041F;
 uint8_t g_20000420;
+uint8_t g_20000427;
+uint8_t g_2000042C;
 uint8_t g_2000042D;
 uint8_t g_2000042F;
 uint8_t g_20000438;
@@ -95,12 +103,13 @@ uint8_t g_2000045B;
 uint8_t g_2000045C;
 uint8_t g_20000461;
 uint8_t g_20000464;
+uint8_t g_20000474;
 uint8_t g_20000D0C[16];
 
 bool gIs_A_Scan;
 bool gIsNoaaMode;
 volatile bool gNextTimeslice;
-bool gNoaaChannel;
+uint8_t gNoaaChannel;
 bool gUpdateDisplay;
 bool gIsFmRadioEnabled;
 uint8_t gA_Scan_Channel;
@@ -119,7 +128,7 @@ volatile uint8_t gSystickCountdown3;
 volatile uint8_t gSystickCountdown4;
 volatile uint16_t gSystickCountdown11;
 volatile bool gSystickFlag0;
-volatile bool gSystickFlag1;
+volatile bool gNextTimeslice40ms;
 volatile bool gSystickFlag5;
 volatile bool gBatterySaveCountdownExpired;
 volatile bool gSystickFlag7;
@@ -129,6 +138,11 @@ volatile bool gSystickFlag10;
 volatile bool gSystickFlag11;
 
 volatile uint16_t ScanPauseDelayIn10msec;
+
+// This probably should be signed! But Ghidra disgrees
+uint16_t gFM_FrequencyDeviation;
+
+uint16_t gCurrentRSSI;
 
 // --------
 
