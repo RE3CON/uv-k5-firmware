@@ -33,3 +33,7 @@ jobs:
         name: firmware
         path: firmware*.bin
 
+    - name: 'Create Release'
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "firmware*.bin"
