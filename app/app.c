@@ -1476,7 +1476,7 @@ static void APP_ProcessKey(KEY_Code_t Key, bool bKeyPressed, bool bKeyHeld)
 						}
 						BK4819_DisableScramble();
 						if (Code == 0xFE) {
-							BK4819_TransmitTone(gEeprom.DTMF_SIDE_TONE, 1750);
+							BK4819_TransmitTone(gEeprom.DTMF_SIDE_TONE, 1050);//1750 to NOAA T-SQL 1050 Hz
 						} else {
 							BK4819_PlayDTMFEx(gEeprom.DTMF_SIDE_TONE, Code);
 						}
