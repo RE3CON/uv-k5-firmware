@@ -39,4 +39,4 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "firmware*.bin"
-        tag: v1.0.9
+        tag: v1.1.0
